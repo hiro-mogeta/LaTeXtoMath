@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>URL Encode View</title>
+  </head>
+  <body>
+    <h1>URL Encode</h1>
+    <label for="text-input">Enter text:</label>
+    <br>
+    <textarea id="input" rows="10" cols="80" oninput="updateEncodedText()"></textarea>
+    <br>
+    <p style="text-align:center;">↓</p>
+    <br>
+    <button onclick="copyEncodedText()">Copy Encoded Text</button>
+    <hr>
+    <div id="output" style="text-align: left;"></div>
+    <hr>
+    <script type="text/javascript">
+      function updateEncodedText() {
+        const input = document.getElementById("input").value;
+        const encoded = encodeURIComponent(input);
+        document.getElementById("output").textContent = encoded;
+      }
+      function copyEncodedText() {
+        const encodedText = document.getElementById("output").textContent;
+        navigator.clipboard.writeText(encodedText);
+      }
+    </script>
+  </body>
+</html>
