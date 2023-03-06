@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>LaTeXtoMath URL Encode</title>
+  </head>
+  <body>
+    <h1>LaTeXtoMath URL Encode</h1>
+    <label for="text-input">Enter text:</label>
+    <br>
+    <textarea id="input" rows="10" cols="80" oninput="updateEncodedText()"></textarea>
+    <br>
+    <p style="text-align:center;">↓</p>
+    <br>
+    <button onclick="copyEncodedText()">Copy Encoded Text</button>
+    <hr>
+    <div id="output" style="text-align: left;"></div>
+    <br/>
+    <hr>
+    <br/>
+    <!-- admax -->
+    <script src="https://adm.shinobi.jp/o/06d1446960eb0266eabfbe2d1f282cb7"></script>
+    <!-- admax -->
+    <script type="text/javascript">
+      function updateEncodedText() {
+        const input = document.getElementById("input").value;
+        const encoded = encodeURIComponent(input);
+        const url = `https://hiro-mogeta.github.io/LaTeXtoMath/?input=${encoded}`;
+        document.getElementById("output").innerHTML = `<a href="${url}">${url}</a>`;
+      }
+      
+      function copyEncodedText() {
+        const url = document.getElementById("output").querySelector("a").getAttribute("href");
+        navigator.clipboard.writeText(url);
+      }
+    </script>
+  </body>
+</html>
